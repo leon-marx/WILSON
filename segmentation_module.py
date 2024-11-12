@@ -34,11 +34,7 @@ def get_body(opts, norm):
             pretrained_path = f'pretrained/wide_resnet38_ipabn_lr_256.pth.tar'
         else:
             pretrained_path = f'pretrained/{opts.backbone}_iabn_sync.pth.tar'
-        from functools import partial
-        import pickle
-        pickle.load = partial(pickle.load, encoding="latin1")
-        pickle.Unpickler = partial(pickle.Unpickler, encoding="latin1")
-        pre_dict = torch.load(pretrained_path, map_location='cpu', weights_only=False, pickle_module=pickle)
+        pre_dict = torch.load(pretrained_path, map_location='cpu', weights_only=False, encoding='latin1')
 
         new_state = {}
         for k, v in pre_dict['state_dict'].items():
