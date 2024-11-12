@@ -35,7 +35,7 @@ def get_argparser():
     parser = argparse.ArgumentParser()
 
     # Performance Options
-    parser.add_argument("--local_rank", type=int, default=0)
+    parser.add_argument("--local_rank", "--local-rank", type=int, default=0)
     parser.add_argument("--random_seed", type=int, default=42,
                         help="random seed (default: 42)")
     parser.add_argument("--num_workers", type=int, default=1,
